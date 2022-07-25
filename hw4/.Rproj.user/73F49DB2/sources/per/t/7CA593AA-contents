@@ -1,0 +1,18 @@
+HMP<-read.table(file="data/data2.csv", header=TRUE, sep=",")
+library(Rsrat)
+HMP
+srm.models
+(result <- fit.srm.nhpp(te=1000,time=HMP$Time.to.Failure,selection=NULL))
+mvfplot(te=1000,time=HMP$Time.to.Failure,srms=result)
+plot(1:100000,result$exp$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$exp$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$gamma$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$pareto$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$tnorm$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$lnorm$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$tlogis$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$llogis$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$txvmax$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$lxvmax$srm$intensity(1:100000),lty=1)
+lines(1:100000,result$txvmin$intensity(1:100000),lty=1)
+lines(1:100000,result$lxvmin$intensity(1:100000),lty=)
